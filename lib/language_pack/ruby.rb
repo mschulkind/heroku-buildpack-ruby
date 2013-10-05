@@ -650,6 +650,7 @@ params = CGI.parse(uri.query || "")
   def rake_task_defined?(task)
     puts "TASK DEFINED?"
     instrument "ruby.rake_task_defined" do
+      puts run("env PATH=$PATH bundle exec rake #{task} --dry-run")
       run("env PATH=$PATH bundle exec rake #{task} --dry-run") && $?.success?
     end
   end
