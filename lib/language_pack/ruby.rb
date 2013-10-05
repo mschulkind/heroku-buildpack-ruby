@@ -648,6 +648,7 @@ params = CGI.parse(uri.query || "")
   # @param [String] the task in question
   # @return [Boolean] true if the rake task is defined in the app
   def rake_task_defined?(task)
+    puts "TASK DEFINED?"
     instrument "ruby.rake_task_defined" do
       run("env PATH=$PATH bundle exec rake #{task} --dry-run") && $?.success?
     end

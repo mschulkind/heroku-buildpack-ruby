@@ -56,10 +56,12 @@ private
 
   # runs the tasks for the Rails 3.1 asset pipeline
   def run_assets_precompile_rake_task
+    puts "ABOUT TO COMPILE"
     instrument "rails3.run_assets_precompile_rake_task" do
       log("assets_precompile") do
+        puts "INSIDE LOG"
         setup_database_url_env
-
+        puts "CHECKING...."
         if rake_task_defined?("assets:precompile")
           topic("Preparing app for Rails asset pipeline")
           if File.exists?("public/assets/manifest.yml")
